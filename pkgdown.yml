@@ -1,0 +1,23 @@
+pandoc: 3.8.3
+pkgdown: 2.2.1
+pkgdown_sha: ~
+articles:
+  articles/accessibility_guide: accessibility_guide.html
+  articles/snippets/add-plots_coding: snippets/add-plots_coding.html
+  articles/snippets/add-plots_img: snippets/add-plots_img.html
+  articles/snippets/add-plots_rda: snippets/add-plots_rda.html
+  articles/caps-alttext-alt-workflows: caps-alttext-alt-workflows.html
+  articles/snippets/code-custom-figs-tables: snippets/code-custom-figs-tables.html
+  articles/custom-figs-tabs: custom-figs-tabs.html
+  articles/example_reports: example_reports.html
+  articles/snippets/export-custom-figs-tables: snippets/export-custom-figs-tables.html
+  articles/faqs: faqs.html
+  articles/snippets/id_width: snippets/id_width.html
+  articles/markdown_notation: markdown_notation.html
+  articles/snippets/save-caps-alttext: snippets/save-caps-alttext.html
+  articles/std_guidelines: std_guidelines.html
+  articles/snippets/write-caps-alttext: snippets/write-caps-alttext.html
+last_built: 2026-09-15T22:35Z
+urls:
+  reference: nmfs-ost.github.io/asar/reference
+  article: nmfs-ost.github.io/asar/articles
