@@ -89,9 +89,9 @@
 #'
 #' Default: NULL
 #'
-#' @param bib_file A character string of the path to a custom `.bib` file, or a logical. 
-#'   If a path is provided, the custom file is used and journal templates are skipped. 
-#'   If `TRUE`, default journal `.bib` templates are downloaded. 
+#' @param bib_file A character string of the path to a custom `.bib` file, or a logical.
+#'   If a path is provided, the custom file is used and journal templates are skipped.
+#'   If `TRUE`, default journal `.bib` templates are downloaded.
 #'   If `FALSE` or `NULL` (default), a minimal `.bib` file containing only the `asar` package citation is created.
 #'
 #' @param new_template TRUE/FALSE; Create a new template? If true,
@@ -499,11 +499,11 @@ create_template <- function(
     if (!dir.exists(bib_dir)) {
       dir.create(bib_dir, recursive = FALSE)
     }
-    
+
     bib_name <- NULL
 
-    # asar citation 
-      asar_citation <- "@Manual{asar_2026,
+    # asar citation
+    asar_citation <- "@Manual{asar_2026,
                             title = {asar: Build NOAA Stock Assessment Report},
                             author = {Samantha Schiano and Sophie Breitbart and Steve Saul},
                             year = {2026},
@@ -513,34 +513,33 @@ create_template <- function(
 
     if (!rerender_skeleton) {
       if (is.character(bib_file)) {
-       # File provided: Copy the custom bib and create the asar citation .bib
+        # File provided: Copy the custom bib and create the asar citation .bib
         file.copy(bib_file, bib_dir, overwrite = TRUE) |> suppressWarnings()
         asar_bib_path <- file.path(bib_dir, "asar_citation.bib")
         write(asar_citation, file = asar_bib_path)
         bib_name <- c(basename(bib_file), "asar_citation.bib")
-    } else if (isTRUE(bib_file)) {
+      } else if (isTRUE(bib_file)) {
         # TRUE: Download the journal packages bib and create the asar citation .bib
         journals::download_bibs(bib_dir)
         bib_file_paths <- list.files(bib_dir, pattern = ".bib", full.names = TRUE)
         base_bib_file <- bib_file_paths[!grepl(".sty", bib_file_paths)]
-        
+
         # Move .sty file to main report folder
         sty_files <- list.files(bib_dir, pattern = ".sty", full.names = TRUE)
         if (length(sty_files) > 0) {
           file.copy(sty_files, subdir, overwrite = FALSE) |> suppressWarnings()
           file.remove(sty_files)
         }
-        
+
         asar_bib_path <- file.path(bib_dir, "asar_citation.bib")
         write(asar_citation, file = asar_bib_path)
-        
+
         bib_name <- c(basename(base_bib_file), "asar_citation.bib")
-        
       } else {
         # FALSE or NULL: Just make the asar citation .bib
         asar_bib_path <- file.path(bib_dir, "asar_citation.bib")
         write(asar_citation, file = asar_bib_path)
-        
+
         bib_name <- "asar_citation.bib"
       }
     } else {
